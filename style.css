@@ -22,7 +22,10 @@ body {
     margin-block-start: 1em;
     margin-block-end: 1em;
     font-weight: bold;
-    border-radius: 0.3em;
+    border: 1px solid #222;
+    border-radius: 0.5em;
+    padding: 5px;
+    color: #444;
 }
 #search-button:hover {
     background-color: #ff8080;
@@ -75,15 +78,15 @@ pre code {
     max-height:500px;
 }
 
-a.post-edit-link {
-    color: #666;
-    border-style: solid;
-    border-color: gray;
-    background: #eee;
+#edit-post-button {
+    font-size: 1.17em;
+    border: 1px solid #222;
     border-radius: 0.5em;
-    padding: 2px 4px 2px 4px;  
+    padding: 5px;
+    color: #444;
 }
-a.post-edit-link:hover {
+
+#edit-post-button:hover {
     background-color: #ff8080;
 }
 

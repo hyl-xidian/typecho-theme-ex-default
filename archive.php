@@ -38,9 +38,7 @@
 
 
                 </ul>
-                <div class="post-content" itemprop="articleBody">
-                    <?php $this->content('- 阅读剩余部分 -'); ?>
-                </div>
+                
             </article>
         <?php endwhile; ?>
     <?php else: ?>

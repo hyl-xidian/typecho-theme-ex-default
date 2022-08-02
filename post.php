@@ -2,23 +2,20 @@
 <?php $this->need('header.php'); ?>
 
 <div class="col-mb-12 col-8" id="main" role="main">
+    
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
         <h1 class="post-title" itemprop="name headline">
-            <a itemprop="url"
-               href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
+            <a itemprop="url" href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
         </h1>
-        <?php if($this->user->hasLogin()):?>
-<div style="margin:15px 0 25px 0;"><a class="post-edit-link" href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid;?>" title="编辑该文章" target="_blank">Edit</a></div><?php endif;?>
+        
         <ul class="post-meta">
             <li itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <?php _e('作者: '); ?><a itemprop="name"
-                                       href="<?php $this->author->permalink(); ?>"
-                                       rel="author"><?php $this->author(); ?></a>
+                <?php _e('作者: '); ?><a itemprop="name" href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a>
             </li>
             <li><?php _e('时间: '); ?>
                 <time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time>
             </li>
-            
+
 
             <?php if (date('Y-m-d', $this->created) !== date('Y-m-d', $this->modified)) : ?>
                 <li>
@@ -26,29 +23,27 @@
                 </li>
             <?php endif; ?>
 
-            
+
             <li><?php _e('分类: '); ?><?php $this->category(','); ?></li>
-            <li itemprop="interactionCount"><a
-                href="<?php $this->permalink() ?>#comments">评论</a>
+            <li itemprop="interactionCount"><a href="<?php $this->permalink() ?>#comments">评论</a>
             </li>
 
         </ul>
-        <?php if($this->fields->showTimeWarning !== 'off'&&(time()-($this->modified))/86400 >= $this->options->outoftime) : ?>
+        <?php if ($this->fields->showTimeWarning !== 'off' && (time() - ($this->modified)) / 86400 >= $this->options->outoftime) : ?>
 
-            <div style="font-weight:700;border-left: 5px solid #ff8080;margin: 15px 0 20px;border-radius: 3px;background-color: #eeefef;padding: 0.5em 1em 0.5em 0.5em">这篇文章距离最后更新已过<?php echo floor((time()-($this->modified))/86400);?>
-天，如果图片资源失效或者文章内容过时，请留言反馈，我会及时处理，感谢！
+            <div style="font-weight:700;border-left: 5px solid #ff8080;margin: 15px 0 20px;border-radius: 3px;background-color: #eeefef;padding: 0.5em 1em 0.5em 0.5em">这篇文章距离最后更新已过<?php echo floor((time() - ($this->modified)) / 86400); ?>
+                天，如果图片资源失效或者文章内容过时，请留言反馈，我会及时处理，感谢！
             </div>
-        
+
         <?php endif; ?>
 
         <div class="post-content" itemprop="articleBody">
-            <?php parseContent($this); ?> 
+            <?php parseContent($this); ?>
         </div>
         <p itemprop="keywords" class="tags"><?php _e('标签: '); ?><?php $this->tags(', ', true, 'none'); ?></p>
     </article>
     <div id="comments"></div>
-    <!--<?php $this->need('comments.php'); ?>-->
-    
+
 
     <ul class="post-near">
         <li>上一篇: <?php $this->thePrev('%s', '没有了'); ?></li>
@@ -62,29 +57,29 @@
 <script src="https://npm.elemecdn.com/artalk@2.3.4/dist/Artalk.js"></script>
 <!-- Artalk -->
 <script>
- new Artalk({
-   el:        '#comments',
-   pageKey:   '<?php $this->permalink() ?>',
-   pageTitle: '<?php $this->title() ?>',
-   server:    'https://artalk.floatu.top',
-   site:      'Floatu-wiki',
-   placeholder: "如果对文章内容有意见，欢迎评论交流",
-   noComment: "暂无评论",
-   pvCount: "false",
-   commentCount: "false",
-   gravatar: {
-       mirror: "https://cravatar.cn/avatar/",
-       default: "mp"
-   },
-   emoticons: [
-    "https://meme-repo.pages.dev/memes/emoticon.json",
-    "https://meme-repo.pages.dev/memes/emoji.json",
-    "https://meme-repo.pages.dev/memes/alu/alu_owo.json",
-    "https://meme-repo.pages.dev/memes/huaji/huaji_owo.json",
-    "https://meme-repo.pages.dev/memes/luoxiaohei/luoxiaohei_owo.json",
-    "https://meme-repo.pages.dev/memes/bilibilitv/bilibilitv_artalk.json"
-  ]
- })
+    new Artalk({
+        el: '#comments',
+        pageKey: '<?php $this->permalink() ?>',
+        pageTitle: '<?php $this->title() ?>',
+        server: 'https://artalk.floatu.top',
+        site: 'Floatu-wiki',
+        placeholder: "如果对文章内容有意见，欢迎评论交流",
+        noComment: "暂无评论",
+        pvCount: "false",
+        commentCount: "false",
+        gravatar: {
+            mirror: "https://cravatar.cn/avatar/",
+            default: "mp"
+        },
+        emoticons: [
+            "https://meme-repo.pages.dev/memes/emoticon.json",
+            "https://meme-repo.pages.dev/memes/emoji.json",
+            "https://meme-repo.pages.dev/memes/alu/alu_owo.json",
+            "https://meme-repo.pages.dev/memes/huaji/huaji_owo.json",
+            "https://meme-repo.pages.dev/memes/luoxiaohei/luoxiaohei_owo.json",
+            "https://meme-repo.pages.dev/memes/bilibilitv/bilibilitv_artalk.json"
+        ]
+    })
 </script>
 <?php $this->need('sidebar.php'); ?>
 <?php $this->need('footer.php'); ?>

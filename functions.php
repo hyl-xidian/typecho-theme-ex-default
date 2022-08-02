@@ -30,6 +30,17 @@ function themeConfig($form)
 
     $outoftime = new Typecho_Widget_Helper_Form_Element_Text('outoftime', NULL,_t('15'), _t('文章过时提醒'), _t('设置文章过时提醒最大天数，默认15天，可在文章管理单独设置是否显示过期提醒'));
     $form->addInput($outoftime);
+
+    $EnableAutoHeaderLink = new Typecho_Widget_Helper_Form_Element_Select('EnableAutoHeaderLink',
+    array(
+      'on' => '开启（默认）',
+      "off" => '关闭'
+      ),
+      'on',
+      '自动生成导航栏独立页面链接',
+      '介绍：如果你要自定义导航栏链接部分,你可以选择关闭此项'
+    );
+    $form->addInput($EnableAutoHeaderLink->multiMode());
 }
 
 function themeFields($layout)

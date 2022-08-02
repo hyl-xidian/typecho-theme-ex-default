@@ -11,7 +11,7 @@
             <?php parseContent($this); ?> 
         </div>
     </article>
-    <?php $this->need('comments.php'); ?>
+    
 </div><!-- end #main-->
 
 <?php $this->need('sidebar.php'); ?>
