@@ -11,10 +11,12 @@
 <div class="col-mb-12 col-offset-1 col-3 kit-hidden-tb" id="secondary" role="complementary" style="position:absolute; top:240px; left:60%;">
     <button id="search-button" class="search-form-input">搜索全部</button>
     <?php if ($this->user->hasLogin()) { ?>
+        <?php if ($this->is('post')) : ?>
             <a id="edit-post-button" href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid; ?>" title="进入后台编辑该文章" target="_blank">编辑当前文章</a>
-        <?php } else { ?>
-            <a id="edit-post-button" href="<?php $this->options->siteUrl(); ?>admin/login.php" title="管理员请登录" target="_blank">登录(Admin)</a>
-        <?php }; ?>
+        <?php endif; ?>
+    <?php } else { ?>
+        <a id="edit-post-button" href="<?php $this->options->siteUrl(); ?>admin/login.php" title="管理员请登录" target="_blank">登录(Admin)</a>
+    <?php }; ?>
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRecentPosts', $this->options->sidebarBlock)) : ?>
         <section class="widget">
             <h3 class="widget-title"><?php _e('最新文章'); ?></h3>
